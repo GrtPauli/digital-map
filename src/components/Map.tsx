@@ -8,7 +8,7 @@ import {
 import { Carousel, ConfigProvider, Rate, Tabs } from "antd";
 import { LoadingOutlined } from "@ant-design/icons";
 
-const GOOGLE_MAPS_API_KEY = "AIzaSyAsaOKt24vvQ93WWJqOqIQalC5q3Mw-Ej8"; // Replace with your actual API key
+const GOOGLE_MAPS_API_KEY = import.meta.env.VITE_GOOGLE_API_KEY; // Replace with your actual API key
 
 const containerStyle: React.CSSProperties = {
   width: "100%",
