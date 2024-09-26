@@ -5,7 +5,7 @@ import {
   Autocomplete,
   Marker,
 } from "@react-google-maps/api";
-import { Carousel, ConfigProvider, Rate, Tabs } from "antd";
+import { Carousel, ConfigProvider, Image, Rate, Tabs } from "antd";
 import { LoadingOutlined } from "@ant-design/icons";
 
 const GOOGLE_MAPS_API_KEY = import.meta.env.VITE_GOOGLE_API_KEY; // Replace with your actual API key
@@ -221,30 +221,6 @@ function MapWithPlaceAutocomplete() {
               onLoad={onLoad}
               onPlaceChanged={onPlaceChanged}
             >
-              {/* <div className="w-full relative z-[999999] flex justify-center pt-12">
-                <div className="relative max-w-[400px] w-full">
-                  <input
-                    type="text"
-                    placeholder="Enter a location"
-                    className="border-[1px] rounded-full !pl-14 px-3 py-3 w-full outline-none shadow-md focus:border-green-500"
-                  />
-
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    strokeWidth={1.5}
-                    stroke="#888888"
-                    className="size-6 absolute top-3.5 left-5"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z"
-                    />
-                  </svg>
-                </div>
-              </div> */}
               <div className="w-full relative z-[999999] flex justify-center pt-12">
                 <div className="relative max-w-[400px] w-full">
                   <input
@@ -330,14 +306,23 @@ function MapWithPlaceAutocomplete() {
 
             <div id="image-container">
               {placeDetails?.photos?.length > 0 ? (
-                <Carousel autoplay>
+                <Carousel
+                  arrows
+                  pauseOnHover={false}
+                  autoplay
+                >
                   {placeDetails?.photos?.map((url: any, index: any) => (
-                    <img
-                      className="w-full h-64 object-cover object-center rounded-2xl"
-                      key={index}
-                      src={url}
-                      alt={`Place Photo ${index + 1}`}
-                    />
+                    <div className="">
+                      <Image
+                        rootClassName="!z-[99999999] relative"
+                        height={"256px"}
+                        width={"100%"}
+                        className="object-cover object-center rounded-2xl"
+                        key={index}
+                        src={url}
+                        alt={`Place Photo ${index + 1}`}
+                      />
+                    </div>
                   ))}
                 </Carousel>
               ) : (
